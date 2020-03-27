@@ -1,0 +1,15 @@
+version: '3.2'
+volumes:
+  logs:
+    driver: local
+  vendor:
+    driver: local
+services:
+  jod-converter:
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile
+    tty: true
+    ports:
+      - "${APACHE_PORT}:8080"
